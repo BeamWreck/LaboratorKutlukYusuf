@@ -1,4 +1,4 @@
-# LaboratorKutlukYusuf
+#  LaboratorKutlukYusuf
 Laborator Github - Kutluk Yusuf P-2423
 
 ## Prototipurile Figma

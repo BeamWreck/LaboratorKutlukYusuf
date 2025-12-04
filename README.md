@@ -1,5 +1,13 @@
-#  LaboratorKutlukYusuf
-Laborator Github - Kutluk Yusuf P-2423
+# LaboratorKutlukYusuf
+
+# Autor Laborator Github - Kutluk Yusuf P-2423
+
+# Scopul
+Sarcina de laborator
+
+# Descriere
+Sarcina pentru a adauga fisiere / readme intr-un repository github
+
 
 ## Prototipurile Figma
 

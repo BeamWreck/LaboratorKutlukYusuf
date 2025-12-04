@@ -1,0 +1,243 @@
+// Magazin Online
+
+UCD
+
+
+@startuml
+left to right direction
+actor Utilizator as u
+
+package MagazinOnline {
+  usecase "Adaugare in cos" as UC1
+  usecase "Achitare produse" as UC2
+  usecase "Vizualizare produse" as UC3
+  usecase "Primirea confirmarii" as UC4
+}
+
+u --> UC1
+u --> UC2
+u --> UC3
+u --> UC4
+@enduml
+
+
+SD
+
+
+@startuml
+Utilizator --> MagazinUI: Cererea Autentificari
+MagazinUI --> Database: Se verifica datele inroduse
+
+MagazinUI --> Utilizator: Raspunsul Autentificari
+Database --> MagazinUI: Date validate
+
+MagazinUI --> Utilizator: Permiterea accesului paginii
+Database --> MagazinUI: Permiterea intrarii in pagina
+
+Utilizator --> MagazinUI: Intrarea in pagina
+Database --> Utilizator: Accesul la pagina validat 
+
+@enduml
+
+
+
+CD
+
+
+@startuml
+class CosProduse{
+Produsele
+Reduceri
+}
+class Utilizator{
+Nume
+Prenume
+Date personale
+Card
+}
+class Achitarea{
+Datele bancare
+}
+
+
+Utilizator - CosProduse : Vizualizare >
+CosProduse - Achitarea : Introducerea datelor >
+
+@enduml
+
+
+AD
+
+
+@startuml
+
+start
+
+* Selectezi produsele din cos
+* Achiti produsele
+if (Introduci datele bancare?) then (yes)
+  : Primirea confirmarii;
+else (no)
+  : Continuarea cumparaturilor;
+endif
+
+stop
+
+@enduml
+
+
+
+// Biblioteca
+
+
+UCD
+
+
+@startuml
+left to right direction
+actor Utilizator as u
+actor Admin as a
+
+package BibliotecaDigitala {
+  usecase "Vizualizare Carti" as UC1
+  usecase "Vizualizare Autori" as UC2
+  usecase "Cititori activi" as UC3
+  usecase "Datele imprumut" as UC4
+}
+
+u --> UC1
+u --> UC2
+a --> UC3
+a --> UC4
+@enduml
+
+
+SD
+
+
+@startuml
+Utilizator --> Biblioteca: Cererea Autentificari
+Biblioteca --> Database: Se verifica datele inroduse
+
+Biblioteca --> Utilizator: Raspunsul Autentificari
+Database --> Biblioteca: Date validate
+
+Biblioteca --> Utilizator: Permiterea accesului vizualizarii cartilor
+Database --> Biblioteca: Permiterea intrarii in biblioteca digitala
+
+Utilizator --> Biblioteca: Intrarea in biblioteca digitala
+Database --> Utilizator: Accesul la biblioteca digitala validat 
+
+@enduml
+
+
+CD
+
+
+@startuml
+class Cartile{
+Autori
+Titluri
+}
+class Utilizator{
+Nume
+Prenume
+Date personale
+}
+class Achitarea{
+Datele bancare
+}
+class Imprumut{
+Date Imprumut
+}
+
+Utilizator - Cartile : Vizualizare >
+Cartile - Achitarea : Introducerea datelor bancare >
+Cartile - Imprumut: Introducerea datelor >
+
+@enduml
+
+
+AD
+
+
+@startuml
+
+start
+
+* Selectezi Cartile Dorite
+* Procesul Imprumut
+if (Introduci datele necesare?) then (yes)
+  : Primirea confirmarii;
+else (no)
+  : Continuarea vizualizarii cartilor;
+endif
+
+stop
+
+@enduml
+
+
+// Hoteliera
+
+
+UCD
+
+
+@startuml
+left to right direction
+actor Utilizator as u
+actor Admin as a
+
+package Hoteliera {
+  usecase "Cautarea camerelor" as UC1
+  usecase "Rezervarea unei camere" as UC2
+  usecase "Anularea rezervarii" as UC3
+  usecase "Recenzie" as UC4
+}
+
+u --> UC1
+u --> UC2
+u --> UC3
+a --> UC3
+u --> UC4
+@enduml
+
+
+SD
+
+
+@startuml
+Utilizator --> Hoteliera: Verificarea camerelor disponibile
+Hoteliera --> Database: Se verifica camerele disponinile
+
+Database --> Utilizator: Raspunsul cerintei
+Hoteliera --> Database: Verificarea datelor
+
+Utilizator --> Hoteliera: Cererea anularea rezervarii
+Database --> Utilizator: Mesaj de confirmare pentru anulare
+
+@enduml
+
+
+CD
+
+
+@startuml
+class Camere{
+Disponibilitate
+Detalii
+}
+class Utilizator{
+Nume
+Prenume
+Date personale
+}
+class Achitarea{
+Datele bancare
+}
+
+Utilizator - Camere : Vizualizare >
+Utilizator - Achitarea : Introducerea datelor bancare >
+
+@enduml
